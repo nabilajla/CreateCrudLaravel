@@ -42,6 +42,8 @@ class CreateCRUD extends Command
     {
 
         $NM = $this->argument('WhatIsNameModel');
+        $MakeView = new MakeView();
+        $MakeView->SetExpersion($NM);
         // self::CreateFullControllers($NM);
         // self::CreateFullRoute($NM);
         // MakeView::SetViewFolderAndFiles($NM);

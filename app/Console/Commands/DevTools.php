@@ -37,7 +37,12 @@ class DevTools
         {
             return file_get_contents($pathFIle);
         }
-        
+        /**
+         * @param $search
+         * @param $replace
+         * @param $PathFile
+         * @return str_replace
+         */
         function SearchFileAndReplace($search , $replace , $PathFile)
         {
             $ContentFIle = $this->GetContentAnyFile($PathFile);

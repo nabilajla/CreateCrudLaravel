@@ -23,6 +23,9 @@ trait InheritanceAllClasses
         $columns = Schema::getColumnListing($AddSModels);
         return implode(",", $columns);
     }
-
+    static function OneLineInPage()
+    {
+        return "@extends("."'CRUD'".")";
+    }
 
 }
