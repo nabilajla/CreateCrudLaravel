@@ -12,13 +12,13 @@ class Index extends MakeView {
     use InheritanceAllClasses;
 
     function HeaderPage($NM)
-        {
+    {
              $devTools = new DevTools();
              $devTools->setStupFileName("HeaderIndex.stub");
              $Line =  self::OneLineInPage($NM) . "\n\n@section("."'$NM'".")";
             $Line .= "\n\n" . $devTools->GetContentAnyFile($devTools->DevToolsName($devTools->getStupFileName()));
             return $Line;
-        }
+    }
 
         function TabelPageIndex($NM)
         {
@@ -47,6 +47,7 @@ class Index extends MakeView {
             for ($i=0; $i < count($Words); $i++) { 
                 $Lines .= "\t\t<th>". $Words[$i]."</th>\n";
             }
+                $Lines .= "\t\t<th>show</th>\n";
             return $Lines;
         }
 
@@ -57,15 +58,19 @@ class Index extends MakeView {
             $CodeTh = str_replace("{{TH}}",$Th,$CodeTh,$i);
             return $CodeTh;
         }
+
+
         function TD($NM)
         {
             $Lines = "";
             $StringColumn = InheritanceAllClasses::ColumnDataBaseAnyNameTable($NM);
             $Words = explode(",", $StringColumn);
-            $NM[0] = Str::lower($NM[0]);
+            $NM = self::FirstLowerCase($NM);
             for ($i=0; $i < count($Words); $i++) { 
-                $Lines .= "\t\t<td> $$NM->". $Words[$i]."</td>\n";
+                $Lines .= "\t\t<td>{{ $$NM->". $Words[$i]."}}</td>\n";
             }
+            $NMUpper = self::FirstUpperCase($NM);
+                $Lines .= "\t\t<td> <a class=\"btn btn-primary\" href=\"{{route('$NMUpper.show', $$NM->"."id"." )}}\" > show </a></td>\n";
             return $Lines;
         }
 

@@ -28,6 +28,7 @@ class CreateCRUD extends Command
 
     public static function CreateFullControllers($NM)
     {
+        Artisan::call("make:model $NM");
          Artisan::call("make:controller $NM" . "Controller --resource");
         $devTools = new DevTools();
         $devTools->MakeFullController($NM);
@@ -42,9 +43,9 @@ class CreateCRUD extends Command
     {
 
         $NM = $this->argument('WhatIsNameModel');
+        self::CreateFullControllers($NM);
         $MakeView = new MakeView();
-        $MakeView->SetExpersion($NM);
-        // self::CreateFullControllers($NM);
+        $MakeView->StartView($NM);
         // self::CreateFullRoute($NM);
         // MakeView::SetViewFolderAndFiles($NM);
         // DevTools::setControl($NM);

@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/CRUD', function () {
+    return view('CRUD');
+});
  
-Route::resource('Nabil', "App\Http\Controllers\NabilController");
 Route::resource('Nabil', "App\Http\Controllers\NabilController");

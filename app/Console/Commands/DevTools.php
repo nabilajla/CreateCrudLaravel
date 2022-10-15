@@ -93,7 +93,7 @@ class DevTools
 
         function Redirect($ModelName)
         {
-            return "return redirect()->action([$ModelName::class, 'index'])->with('Success', 'successfuly );";
+            return "return redirect()->action([$ModelName::class, 'index'])->with('Success', 'successfuly' );";
         }
 
         function AllLineStore($ModelName)

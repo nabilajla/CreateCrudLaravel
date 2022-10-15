@@ -44,17 +44,38 @@ class MakeView extends Path
                fclose($fs);
            }
         }
+
         function FilesIndexInFolder($NM)
         {
             return $this->PathView($NM) . "\\index.blade.php";
         }
 
-        function SetExpersion($NM)
+        function FilesShowInFolder($NM)
+        {
+            return $this->PathView($NM) . "\\show.blade.php";
+        }
+
+        function SetIndex($NM)
         {
             $Index = new Index();
             $fs = fopen($this->FilesIndexInFolder($NM) , 'w');
             fwrite($fs ,$Index->SetTD($NM));
             fclose($fs);
+        }
+
+        function SetShow($NM)
+        {
+            $show = new Show();
+            $fs = fopen($this->FilesShowInFolder($NM) , 'w');
+            fwrite($fs ,$show->StartPage($NM));
+            fclose($fs);
+        }
+
+        function StartView($NM)
+        {
+            $this->MakeViewFolder($NM);
+            $this->SetIndex($NM);
+            $this->SetShow($NM);
         }
         
     }

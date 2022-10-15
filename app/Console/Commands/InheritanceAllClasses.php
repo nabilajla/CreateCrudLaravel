@@ -23,9 +23,24 @@ trait InheritanceAllClasses
         $columns = Schema::getColumnListing($AddSModels);
         return implode(",", $columns);
     }
+
     static function OneLineInPage()
     {
-        return "@extends("."'CRUD'".")";
+        return "@extends(\"CRUD\")";
+    }
+
+    static  function FirstUpperCase($Text)
+    {
+        $FirstText = $Text[0];
+        $FirstText = Str::Upper($Text[0]);
+        return $FirstText . Str::substr($Text,1);   
+    }
+
+    static  function FirstLowerCase($Text)
+    {
+        $FirstText = $Text[0];
+        $FirstText = Str::lower($Text[0]);
+        return $FirstText . Str::substr($Text,1);   
     }
 
 }

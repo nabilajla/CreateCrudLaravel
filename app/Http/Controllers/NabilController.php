@@ -25,14 +25,14 @@ class NabilController extends Controller
 
     public function store(Request $request)
     {
-    $Nabil = new Nabil();
+        $Nabil = new Nabil();
 
-    $Nabil->id = $request->input('id');
-    $Nabil->Name = $request->input('Name');
-    $Nabil->created_at = $request->input('created_at');
-    $Nabil->updated_at = $request->input('updated_at');
-    $Nabil->save();
-    return redirect()->action([Nabil::class, 'index']);
+$Nabil->id = $request->input('id');
+$Nabil->Name = $request->input('Name');
+$Nabil->created_at = $request->input('created_at');
+$Nabil->updated_at = $request->input('updated_at');
+$Nabil->save();
+return redirect()->action([Nabil::class, 'index'])->with('Success', 'successfuly' );
     }
 
 
@@ -55,20 +55,20 @@ class NabilController extends Controller
     public function update(Request $request, $id)
     {
         $Nabil = new Nabil();
-        $Nabil = Nabil::findOrFail($id);
-        $Nabil->id = $request->input('id');
-        $Nabil->Name = $request->input('Name');
-        $Nabil->created_at = $request->input('created_at');
-        $Nabil->updated_at = $request->input('updated_at');
-        $Nabil->save();
-        return redirect()->action([Nabil::class, 'index']);
+$Nabil = Nabil::findOrFail($id);
+$Nabil->id = $request->input('id');
+$Nabil->Name = $request->input('Name');
+$Nabil->created_at = $request->input('created_at');
+$Nabil->updated_at = $request->input('updated_at');
+$Nabil->save();
+return redirect()->action([Nabil::class, 'index'])->with('Success', 'successfuly' );
     }
 
 
     public function destroy($id)
     {
         $to_delet = Nabil::findOrFail($id);
-        $to_delet->delete(); 
+$to_delet->delete(); 
         return redirect()->route('Nabil.index');
     }
 }
