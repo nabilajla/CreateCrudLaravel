@@ -46,13 +46,5 @@ class CreateCRUD extends Command
         self::CreateFullControllers($NM);
         $MakeView = new MakeView();
         $MakeView->StartView($NM);
-        // self::CreateFullRoute($NM);
-        // MakeView::SetViewFolderAndFiles($NM);
-        // DevTools::setControl($NM);
-
-        // $this->info( );
-        //  $this->info( "Successfully create Route  $NameModel" , 'Info');
-
-        //  $this->publishRoute($NameModel);
     }
 }

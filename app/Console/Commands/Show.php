@@ -19,6 +19,11 @@ class Show extends MakeView {
             return $Line;
         }
 
+        function BodyPage()
+        {
+            
+        }
+
         function StartPage($NM)
         {
             return $this->HeaderPage($NM);
