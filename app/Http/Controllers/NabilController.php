@@ -27,12 +27,12 @@ class NabilController extends Controller
     {
         $Nabil = new Nabil();
 
-$Nabil->id = $request->input('id');
-$Nabil->Name = $request->input('Name');
-$Nabil->created_at = $request->input('created_at');
-$Nabil->updated_at = $request->input('updated_at');
-$Nabil->save();
-return redirect()->action([Nabil::class, 'index'])->with('Success', 'successfuly' );
+    $Nabil->id = $request->input('id');
+    $Nabil->Name = $request->input('Name');
+    $Nabil->created_at = $request->input('created_at');
+    $Nabil->updated_at = $request->input('updated_at');
+    $Nabil->save();
+        return redirect()->action([Nabil::class, 'index'])->with('Success', 'successfuly' );
     }
 
 

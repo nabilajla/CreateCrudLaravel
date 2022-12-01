@@ -1,5 +1,4 @@
-<a class="btn btn-primary m-2 w-25" href="{{ route('{{Model}}.create')}}">Create Team</a>
-            <table class="table table-borderless table-hover ">
+<table class="table table-borderless table-hover ">
                 <thead>
                     <tr>
 			            {{TH}}
@@ -11,7 +10,5 @@
 			            {{TD}}
                     </tr>
                     @endforeach
-		</tbody>
-	    </table>
-        </div>
-@endsection
+	</tbody>
+</table>

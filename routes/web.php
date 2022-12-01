@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Arr;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+        return view('welcome');
+
 });
+
 Route::get('/CRUD', function () {
     return view('CRUD');
 });
- 
+
 Route::resource('Nabil', "App\Http\Controllers\NabilController");

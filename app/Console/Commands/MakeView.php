@@ -28,11 +28,11 @@ class MakeView extends Path
             if(!is_dir($this->PathView($NM)))
             {
                 mkdir($this->PathView($NM),0777,true);
-                Infos(" Folder created successfully [ $NM  ]. " , 1);
+                // Infos(" Folder created successfully [ $NM  ]. " , 1);
             }
             else
             {
-                Infos(" This Folder $NM alerted ." , 2);
+                // Infos(" This Folder $NM alerted ." , 2);
             } 
         }
 

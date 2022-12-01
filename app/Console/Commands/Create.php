@@ -8,7 +8,7 @@ use App\helper;
 use File;
 use Illuminate\Support\Str;
 
-class Index extends MakeView {
+class Create extends MakeView {
     use InheritanceAllClasses;
 
     function HeaderPage($NM)

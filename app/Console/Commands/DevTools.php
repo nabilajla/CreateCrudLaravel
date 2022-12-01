@@ -37,18 +37,25 @@ class DevTools
         {
             return file_get_contents($pathFIle);
         }
+        
+        public static function GetSubAnyFile($pathFIle)
+        {
+            return file_get_contents($pathFIle);
+        }
         /**
          * @param $search
          * @param $replace
          * @param $PathFile
          * @return str_replace
          */
-        function SearchFileAndReplace($search , $replace , $PathFile)
+        
+         function SearchFileAndReplace($search , $replace , $PathFile)
         {
             $ContentFIle = $this->GetContentAnyFile($PathFile);
             $FinishControllers = str_replace($search,$replace,$ContentFIle,$i);
             return $FinishControllers;
         }
+
         function FileController( $Serach , $replace ,$ModelName)
         {
             $FileSearch = $this->DevToolsNameCon($ModelName) . 'Controller.php' ;
@@ -167,7 +174,7 @@ class DevTools
             $this->ReplaceCodeInController("[show]",$this->Show($ModelName),$ModelName);
             $this->ReplaceCodeInController("[destroy]",$this->Destroy($ModelName),$ModelName);
             $this->ReplaceCodeInController("[update]",$this->Update($ModelName),$ModelName);
-                Infos(" Full Controller successfully $ModelName." , 1);
+                // Infos(" Full Controller successfully $ModelName." , 1);
         }
         // public function ControllerPath($NameController)
         // {
