@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Console\Commands;
 use App\Console\Commands\MakeRoute;
 use App\Console\Commands\Index;
@@ -24,7 +24,7 @@ class MakeView extends Path
 
     function MakeViewFolder($NM)
         {
-            
+
             if(!is_dir($this->PathView($NM)))
             {
                 mkdir($this->PathView($NM),0777,true);
@@ -33,13 +33,13 @@ class MakeView extends Path
             else
             {
                 // Infos(" This Folder $NM alerted ." , 2);
-            } 
+            }
         }
 
         function MakeFourFiles($NM)
         {
            $Files = array( 'index' , 'create' , 'show' , 'edit' );
-           for ($i=0; $i < 4; $i++) { 
+           for ($i=0; $i < 4; $i++) {
                $fs = fopen($this->PathView($NM) . "\\" . $Files[$i] .".blade.php" , 'a');
                fclose($fs);
            }
@@ -53,6 +53,16 @@ class MakeView extends Path
         function FilesShowInFolder($NM)
         {
             return $this->PathView($NM) . "\\show.blade.php";
+        }
+
+        function FilesCreateInFolder($NM)
+        {
+            return $this->PathView($NM) . "\\create.blade.php";
+        }
+
+        function FilesUpdateInFolder($NM)
+        {
+            return $this->PathView($NM) . "\\edit.blade.php";
         }
 
         function SetIndex($NM)
@@ -71,11 +81,29 @@ class MakeView extends Path
             fclose($fs);
         }
 
+        function SetCreate($NM)
+        {
+            $create = new Create();
+            $fs = fopen($this->FilesCreateInFolder($NM) , 'w');
+            fwrite($fs ,$create->StartPage($NM));
+            fclose($fs);
+        }
+
+        function SetUpdate($NM)
+        {
+            $edit = new Edit();
+            $fs = fopen($this->FilesUpdateInFolder($NM) , 'w');
+            fwrite($fs ,$edit->StartPage($NM));
+            fclose($fs);
+        }
+
         function StartView($NM)
         {
             $this->MakeViewFolder($NM);
             $this->SetIndex($NM);
             $this->SetShow($NM);
+            $this->SetCreate($NM);
+            $this->SetUpdate($NM);
         }
-        
+
     }

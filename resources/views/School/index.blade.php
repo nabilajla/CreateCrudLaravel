@@ -1,6 +1,6 @@
 @extends("CRUD")
 
-@section('Nabil')
+@section('School')
 
 <div class="container card p-2 m-2 bg-light">
 @if(session()->has('Success'))
@@ -8,12 +8,13 @@
 {{ session()->get('success') }}
 </div>
 @endif
-<a class="btn btn-primary m-2 w-25" href="{{ route('Nabil.create')}}">Create Team</a>
+<a class="btn btn-primary m-2 w-25" href="{{ route('School.create')}}">Create Team</a>
             <table class="table table-borderless table-hover ">
                 <thead>
                     <tr>
 			            		<th>id</th>
-		<th>Name</th>
+		<th>title</th>
+		<th>body</th>
 		<th>created_at</th>
 		<th>updated_at</th>
 		<th>show</th>
@@ -23,15 +24,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($Nabil as $nabil)
+                    @foreach($School as $school)
                     <tr>
-			            		<td>{{ $nabil->id}}</td>
-		<td>{{ $nabil->Name}}</td>
-		<td>{{ $nabil->created_at}}</td>
-		<td>{{ $nabil->updated_at}}</td>
-		<td> <a class="btn btn-success" href="{{route('Nabil.show', $nabil->id )}}" > show </a></td>
-		<td> <a class="btn btn-primary" href="{{route('Nabil.edit', $nabil->id )}}" > Edit </a></td>
-		<td> <form action="{{route('Nabil.destroy', $nabil->id )}}" method="POST" >
+			            		<td>{{ $school->id}}</td>
+		<td>{{ $school->title}}</td>
+		<td>{{ $school->body}}</td>
+		<td>{{ $school->created_at}}</td>
+		<td>{{ $school->updated_at}}</td>
+		<td> <a class="btn btn-success" href="{{route('School.show', $school->id )}}" > show </a></td>
+		<td> <a class="btn btn-primary" href="{{route('School.edit', $school->id )}}" > Edit </a></td>
+		<td> <form action="{{route('School.destroy', $school->id )}}" method="POST" >
                     @csrf
                     @Method("DELETE")
                 <button class="btn btn-danger">Delete</button>

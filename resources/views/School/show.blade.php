@@ -1,5 +1,5 @@
 @extends("CRUD")
-@section("Nabil")
+@section("School")
 <div class="container card p-2 m-2 bg-light">
     <table class="table table-borderless table-hover ">
                 <thead>
@@ -11,22 +11,27 @@
                 <tbody>
 			            <tr>
                 <td>id</td>
-                <td>{{$Nabil->id}}</td>
+                <td>{{$School->id}}</td>
 
                 </tr>
 	<tr>
-                <td>Name</td>
-                <td>{{$Nabil->Name}}</td>
+                <td>title</td>
+                <td>{{$School->title}}</td>
+
+                </tr>
+	<tr>
+                <td>body</td>
+                <td>{{$School->body}}</td>
 
                 </tr>
 	<tr>
                 <td>created_at</td>
-                <td>{{$Nabil->created_at}}</td>
+                <td>{{$School->created_at}}</td>
 
                 </tr>
 	<tr>
                 <td>updated_at</td>
-                <td>{{$Nabil->updated_at}}</td>
+                <td>{{$School->updated_at}}</td>
 
                 </tr>
 	

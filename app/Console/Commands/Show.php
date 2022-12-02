@@ -93,7 +93,6 @@ class Show extends MakeView {
             // $First = InheritanceAllClasses::FirstLowerCase($NM);
             // $this->_Result = str_replace("{{ModelSmall}}",$First, $this->_Result ,$i);
             // $this->_Result = str_replace("{{Model}}",$NM, $this->_Result ,$i);
-            echo $th;
             return $this->_Result;
 
         }

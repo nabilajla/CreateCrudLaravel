@@ -8,13 +8,13 @@ use App\helper;
 use File;
 use Illuminate\Support\Str;
 
-class Create extends MakeView {
+class Edit extends MakeView {
     use InheritanceAllClasses;
     private $Code;
     private $StubBody = "platform\DevTools\HeaderShow.stub";
     private $_StubTable = "platform\DevTools\TableShow.stub";
-    private $_StubFrom = "platform\DevTools\From.stub";
-    private $_StubgroupFrom = "platform\DevTools\group-form.stub";
+    private $_StubFrom = "platform\DevTools\From-Edit.stub";
+    private $_StubgroupFrom = "platform\DevTools\group-from-Edit.stub";
     private $_Result;
 
     public function HeaderPage($NM)
@@ -33,7 +33,7 @@ class Create extends MakeView {
         $StringColumn = Str::substr($StringColumn, 3, Str::length($StringColumn));
         $words = explode(",", $StringColumn);
         $Form = DevTools::GetSubAnyFile($this->_StubgroupFrom);
-        $Line =  "@csrf\n@Method(\"POST\")\n";
+        $Line =  "";
         for ($i = 0 ; $i < (count($words) - 2) ; $i++)
         {
             $Line .= str_replace("{{name}}" , $words[$i] , $Form , $d);
@@ -50,6 +50,7 @@ class Create extends MakeView {
         $this->_Result = str_replace("{{ Code }}",$Form, $this->_Result ,$i);
         $this->_Result = str_replace("{{Model}}",$NM, $this->_Result ,$i);
         $this->_Result = str_replace("{{ Code }}",$this->CounterForm($NM), $this->_Result ,$i);
+        $this->_Result = str_replace("{{Model}}",$NM, $this->_Result ,$i);
     }
     function StartPage($NM)
     {

@@ -15,7 +15,7 @@ use App\Models\User;
 
 use Illuminate\Console\Command;
 
- 
+
 
 
 class CreateCRUD extends Command
@@ -23,18 +23,20 @@ class CreateCRUD extends Command
     //  use DevTools;
     protected $signature = 'make:crud {WhatIsNameModel}';
 
-     
+
     protected $description = 'this is command line create curd with model name';
 
     public static function CreateFullControllers($NM)
     {
-        Artisan::call("make:model $NM");
-         Artisan::call("make:controller $NM" . "Controller --resource");
+
+
+        Artisan::call("make:controller $NM" . "Controller --resource ");
         $devTools = new DevTools();
         $devTools->MakeFullController($NM);
     }
     public static function  CreateFullRoute($NM)
     {
+        Artisan::call("make:model $NM ");
         $MakeRoute = new MakeRoute();
         $MakeRoute->SetRouteName($NM);
 
@@ -43,6 +45,7 @@ class CreateCRUD extends Command
     {
 
         $NM = $this->argument('WhatIsNameModel');
+        self::CreateFullRoute($NM);
         self::CreateFullControllers($NM);
         $MakeView = new MakeView();
         $MakeView->StartView($NM);

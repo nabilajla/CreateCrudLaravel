@@ -32,12 +32,12 @@ class DevTools
         {
             return $this->ConPath . $WhatIsNameCon;
         }
-        
+
         function GetContentAnyFile($pathFIle)
         {
             return file_get_contents($pathFIle);
         }
-        
+
         public static function GetSubAnyFile($pathFIle)
         {
             return file_get_contents($pathFIle);
@@ -48,7 +48,7 @@ class DevTools
          * @param $PathFile
          * @return str_replace
          */
-        
+
          function SearchFileAndReplace($search , $replace , $PathFile)
         {
             $ContentFIle = $this->GetContentAnyFile($PathFile);
@@ -92,7 +92,7 @@ class DevTools
         {
             return "\n$$ModelName->$ColumnName = " .  "$" ."request->input('$ColumnName');";
         }
-        
+
         function SaveStore($ModelName)
         {
             return "\n$$ModelName->"."save();";
@@ -100,17 +100,18 @@ class DevTools
 
         function Redirect($ModelName)
         {
-            return "return redirect()->action([$ModelName::class, 'index'])->with('Success', 'successfuly' );";
+            return "return redirect()->action([\App\Http\Controllers\\$ModelName"."Controller::class, 'index'])->with('success', 'successfuly' );";
         }
 
         function AllLineStore($ModelName)
         {
         $StringColumn =  InheritanceAllClasses::ColumnDataBaseAnyNameTable($ModelName);
+        $StringColumn = Str::substr($StringColumn, 3, Str::length($StringColumn));
         $words = explode(",", $StringColumn);
 
         $Line = $this->OneLineInStore($ModelName);
 
-            for ($i = 0 ; $i < count($words) ; $i++)
+            for ($i = 0 ; $i < count($words) - 2 ; $i++)
             {
                 $Line .= $this->Column($ModelName,$words[$i]);
             }
@@ -129,17 +130,19 @@ class DevTools
         {
         return "return view('$ModelName.edit' , [
             '$ModelName' => $ModelName::findOrFail(". "$"."id)
-        ]);"; 
+        ]);";
         }
 
         function Update($ModelName)
         {
         $StringColumn =  InheritanceAllClasses::ColumnDataBaseAnyNameTable($ModelName);
+        $StringColumn = Str::substr($StringColumn, 3, Str::length($StringColumn));
+
         $words = explode(",", $StringColumn);
 
         $Line = $this->OneLineInStore($ModelName);
         $Line .= "$"."$ModelName = $ModelName::findOrFail(" ."$". "id);";
-            for ($i = 0 ; $i < count($words) ; $i++)
+            for ($i = 0 ; $i < count($words) - 2 ; $i++)
             {
                 $Line .= $this->Column($ModelName,$words[$i]);
             }
@@ -155,13 +158,13 @@ class DevTools
         {
         return "return view('$ModelName.show' , [
             '$ModelName' => $ModelName::findOrFail(". "$"."id)
-        ]);"; 
+        ]);";
         }
 
         function Destroy($ModelName)
         {
-        return "$"."to_delet = $ModelName::findOrFail(". "$" ."id);" . "\n$" . "to_delet->delete(); 
-        return redirect()->route('$ModelName.index');"; 
+        return "$"."to_delet = $ModelName::findOrFail(". "$" ."id);" . "\n$" . "to_delet->delete();
+        return redirect()->action([\App\Http\Controllers\\$ModelName"."Controller::class, 'index'])->with('success', 'Deleted successfuly' );";
         }
 
         function MakeFullController($ModelName)
@@ -176,46 +179,5 @@ class DevTools
             $this->ReplaceCodeInController("[update]",$this->Update($ModelName),$ModelName);
                 // Infos(" Full Controller successfully $ModelName." , 1);
         }
-        // public function ControllerPath($NameController)
-        // {
-        //         return dirname(__DIR__ , 3) . "\\app\\Http\\Controllers\\$NameController.php";
-        // }
-
-
-
-        // public static function EditCreateFunction( $strRePlace ,$NameController , )
-        // {
-        //     $pathFile = self::ControllerPath($NameController);
-        //     $ConConself = self::GetContentControllers($pathFile);
-
-        //     $strRePlace[0] = Str::Upper($strRePlace[0]);
-        //     $FirstUppperCase = Str::lower($strRePlace);
-
-
-        //     $FinishControllers = str_replace("$strRePlace" ,"return View('$NameController.$FirstUppperCase');" ,$ConConself);
-        //     return $FinishControllers;
-        // }
-
-        // public static function SetControllersInFIles( $setInControllers , $NameController)
-        // {
-        //     $pageControllers = self::EditCreateFunction( $setInControllers ,$NameController);
-        //     $fileOpen = self::ControllerPath($NameController);
-            
-        //     $fs =  fopen($fileOpen, 'w');
-        //     fwrite( $fs , $pageControllers );
-        //     fclose($fs);
-        // }
-
-        // public static function setControl($NameController)
-        // {
-
-        //     self::SetControllersInFIles("Index",$NameController );
-        //     self::SetControllersInFIles("Create",$NameController );
-        //     self::SetControllersInFIles("Store",$NameController );
-        //     self::SetControllersInFIles("Edit",$NameController );
-        //     self::SetControllersInFIles("Update",$NameController );
-        //     self::SetControllersInFIles("Show",$NameController );
-        //     self::SetControllersInFIles("Destroy",$NameController);
-
         }
 

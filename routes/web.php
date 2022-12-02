@@ -24,3 +24,7 @@ Route::get('/CRUD', function () {
 });
 
 Route::resource('Nabil', "App\Http\Controllers\NabilController");
+
+Route::resource('Todo', "App\Http\Controllers\TodoController");
+
+Route::resource('School', "App\Http\Controllers\SchoolController");

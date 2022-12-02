@@ -9,6 +9,8 @@
 </head>
 <body>
     @yield("Nabil")
+    @yield("School")
+    {{--YIELD--}}
 
 </body>
 </html>
