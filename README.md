@@ -9,6 +9,9 @@ Folder and Pages
 ```bash
 php artisan make:migration Todo 
 ```
+```bash
+php artisan migrate
+```
 
 ```bash
 php artisan make:crud Todo
