@@ -1,0 +1,53 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+use App\Models\[MNINCon];
+
+class {{ class }} extends Controller
+{
+
+    public function index()
+    {
+        [index]
+    }
+
+
+    public function create()
+    {
+        [create]
+    }
+
+
+    public function store(Request $request)
+    {
+        [store]
+    }
+
+
+    public function show($id)
+    {
+        [show]
+    }
+
+ 
+    public function edit($id)
+    {
+        [edit]
+    }
+
+   
+    public function update(Request $request, $id)
+    {
+        [update]
+    }
+
+
+    public function destroy($id)
+    {
+        [destroy]
+    }
+}

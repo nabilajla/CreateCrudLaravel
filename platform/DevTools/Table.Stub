@@ -1,0 +1,14 @@
+<table class="table table-borderless table-hover ">
+                <thead>
+                    <tr>
+			            {{TH}}
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(${{Model}} as ${{ModelSmall}})
+                    <tr>
+			            {{TD}}
+                    </tr>
+                    @endforeach
+	</tbody>
+</table>

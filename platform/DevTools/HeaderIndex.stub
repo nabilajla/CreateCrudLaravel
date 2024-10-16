@@ -1,0 +1,6 @@
+<div class="container card p-2 m-2 bg-light">
+@if(session()->has('Success'))
+<div class="alert alert-success">
+{{ session()->get('success') }}
+</div>
+@endif
